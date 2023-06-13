@@ -15,8 +15,17 @@ public class Main {
             System.out.println("\nCarga y Consulta de Alumnos...");
             System.out.println("1. Cargar Alumnos");
             System.out.println("2. Consultar Alumnos");
-            System.out.println("3. Salir");
-            opcion = leer.nextInt();
+            System.out.println("3. Eliminar Alumno");
+            System.out.println("4. Salir");
+
+            try {
+                opcion = leer.nextInt();
+            }catch (Exception e){
+                System.out.println("Opcion no valida");
+                opcion = 0;
+                leer.next();
+                continue;
+            }
 
             switch (opcion) {
                 case 1:
@@ -32,13 +41,18 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Saliendo...");
+                    System.out.println("Ingrese la ID del Alumno a Eliminar");
+                    String idEliminar = leer.next().trim();
+                    MiHelper.eliminarAlumno(idEliminar);
                     break;
+
+                case 4:
+                    System.out.println("Saliendo...");
 
                 default:
                     System.out.println("Opcion no valida");
             }
-        } while (opcion != 3);
+        } while (opcion != 4);
 
     }
 
