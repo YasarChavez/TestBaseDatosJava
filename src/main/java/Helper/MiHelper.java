@@ -1,16 +1,15 @@
 package Helper;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class MiHelper {
     public MiHelper() {
     }
+
     private static final String url = "jdbc:mysql://localhost:3306/cursojava";
     private static final String user = "root";
     private static final String password = "";
+
     public static void cargarAlumnos(String nombre, String grupo) {
         try {
             Connection cn = DriverManager.getConnection(url, user, password);
@@ -24,10 +23,11 @@ public class MiHelper {
             System.out.println(e.getMessage());
         }
     }
+
     public static void consultarAlumnos() {
         try {
             Connection cn = DriverManager.getConnection(url, user, password);
-            PreparedStatement pst = cn.prepareStatement("select * from alumnos" );
+            PreparedStatement pst = cn.prepareStatement("select * from alumnos");
             ResultSet rs = pst.executeQuery();
             System.out.println("Consulta realizada.");
             mostrarResultado(rs);
@@ -41,13 +41,14 @@ public class MiHelper {
     private static void mostrarResultado(ResultSet rs) {
         try {
             while (rs.next()) {
-                System.out.println("ID: "+rs.getString(1)+"\n"+"Alumno: "+rs.getString(2) + "\nGrupo: " + rs.getString(3)+"\n");
+                System.out.println("ID: " + rs.getString(1) + "\n" + "Alumno: " + rs.getString(2) + "\nGrupo: " + rs.getString(3) + "\n");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    public static void  eliminarAlumno(String idEliminar){
+
+    public static void eliminarAlumno(String idEliminar) {
         try {
             Connection cn = DriverManager.getConnection(url, user, password);
             PreparedStatement pst = cn.prepareStatement("delete from alumnos where ID = ?");
@@ -56,7 +57,7 @@ public class MiHelper {
             System.out.println("Alumno eliminado.");
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
