@@ -11,6 +11,7 @@ public class Main {
     public static void main(String... param) {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         int opcion = 0;
+
         do {
             System.out.println("\nCarga y Consulta de Alumnos...");
             System.out.println("1. Cargar Alumnos");
