@@ -32,7 +32,7 @@ public class Main {
                 case 1:
                     System.out.println("Ingrese el Nombre:");
                     String nombre = leer.next().trim();
-                    System.out.println("Ingrese el Grupo");
+                    System.out.println("Ingrese el Apellido");
                     String grupo = leer.next().trim();
                     MiHelper.cargarAlumnos(nombre, grupo);
                     break;
